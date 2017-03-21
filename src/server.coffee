@@ -1,8 +1,10 @@
 import { isArray } from 'lodash'
 import { mkdirs } from 'fs-extra'
-import { normalize, extname } from 'path'
+import { normalize, extname, resolve } from 'path'
 import Fiber from 'fibers'
 import fs from 'fs'
+
+RootPath = __meteor_bootstrap__.serverDir.split('/programs/server')[0].split('/.meteor/')[0]
 
 
 collections = {}
@@ -35,7 +37,8 @@ Meteor.methods
       # генерируем id
       id = Random.id()
       # определяем папку и url
-      dir = "#{data.dir}/#{id}"
+      dir = resolve RootPath, data.dir
+      dir = "#{dir}/#{id}"
       url = "#{data.url}/#{id}"
       return done "error mkdir" unless mkdir dir
       # определяем расширение файла
@@ -64,6 +67,7 @@ Meteor.methods
 
 
 CollectionBehaviours.define 'files', (data) ->
+  data.dir = resolve RootPath, data.dir
   collections[@collection._name] =
     dir: data.dir
     url: data.url

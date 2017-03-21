@@ -17,7 +17,7 @@ Movies.attachBehaviour('files', {
 ```
 Options
 - **field** - The field of the document in which the file will be stored
-- **dir** - Path to the directory for storing files (if it starts with "/" - that way will be considered relative to the project directory. It is recommended to store files outside the meteor-project, as in the example above)
+- **dir** - Path to the directory for storing files (relative from project directory. It is recommended to store files outside the meteor project directory, as in the example above)
 - **url** - Url, which will be automatically generated for files. Meteor will link this url to the file directory. You can specify a url with '//' - for example, if you want to distribute files using Nginx
 - **stores** - Storage for files. The original file will be saved in 'stores.original'. By specifying Other stores - you can pass a function - what to do with the files before saving or the array [width, height] - for images resize
 
@@ -61,6 +61,7 @@ console.log(movie);
 - [x] Create url for files by meteor WebApp
 - [x] Support image (jpeg/png)
 - [x] Easy resize image files
+- [ ] Auto remove files, are't in documents
 - [ ] User function for edit file after upload
 - [ ] Validation files
 - [ ] Multiple files to one mongo document

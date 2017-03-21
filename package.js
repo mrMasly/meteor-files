@@ -1,6 +1,6 @@
 Package.describe({
   name: 'mrmasly:files',
-  version: '0.0.2',
+  version: '0.0.3',
   summary: 'Store files in Meteor Mongo Collections',
   git: 'https://github.com/mrMasly/meteor-files',
   documentation: 'README.md'
