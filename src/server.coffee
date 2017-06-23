@@ -31,7 +31,9 @@ resize = (name, binary, size) ->
 
 Meteor.methods
   "__mrmasly__files__upload__": (name, binary, collection, type) ->
-    async = Async.runSync (done) ->
+    
+    do Meteor.runSync (done) ->
+    # async = Async.runSync (done) ->
       # сохраняем папку и url для этой коллекции
       data = collections[collection]
       # генерируем id
@@ -63,7 +65,6 @@ Meteor.methods
 
       done null, res
 
-    return async.result
 
 
 CollectionBehaviours.define 'files', (data) ->
@@ -73,6 +74,8 @@ CollectionBehaviours.define 'files', (data) ->
     url: data.url
     stores: data.stores
   if data.url.indexOf('//') is -1
+    Meteor.registeredUrls ?= []
+    Meteor.registeredUrls.push data.url
     WebApp.connectHandlers.use data.url, (req, res, next) ->
       filename = req.originalUrl.replace data.url, data.dir
       filename = normalize filename
