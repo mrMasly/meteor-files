@@ -32,7 +32,7 @@ resize = (name, binary, size) ->
 Meteor.methods
   "__mrmasly__files__upload__": (name, binary, collection, type) ->
     
-    do Meteor.runSync (done) ->
+    do Meteor.wrapAsync (done) ->
     # async = Async.runSync (done) ->
       # сохраняем папку и url для этой коллекции
       data = collections[collection]
