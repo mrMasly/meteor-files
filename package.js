@@ -1,13 +1,13 @@
 Package.describe({
   name: 'mrmasly:files',
-  version: '0.1.1',
+  version: '0.1.3',
   summary: 'Store files in Meteor Mongo Collections',
   git: 'https://github.com/mrMasly/meteor-files',
   documentation: 'README.md'
 });
 
 Npm.depends({
-  "fs-extra": '3.0.1',
+  "fs-extra": '2.1.2',
   "lodash": '4.17.4'
 });
 
